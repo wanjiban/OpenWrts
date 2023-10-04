@@ -47,12 +47,12 @@ jobs:
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
       with:
-        tool-cache: false
-        android: false
-        dotnet: false
-        haskell: false
-        large-packages: false
-        swap-storage: false
+        tool-cache: true
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        swap-storage: true
         
     - name: Clone source code
       working-directory: /workdir
