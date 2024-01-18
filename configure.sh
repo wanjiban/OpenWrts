@@ -8,10 +8,8 @@
 # sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate 
 
 # Hello World
-echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+# echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
-# luci-theme-infinityfreedom
-echo 'src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' >>feeds.conf.default
 
 # passwall
 echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> feeds.conf.default
@@ -89,6 +87,26 @@ sed -i "/uci commit/a uci commit luci"  package/base-files/files/bin/config_gene
 sed -i "/uci commit system/i uci set system.@system[0].timezone=CST-8"  package/base-files/files/bin/config_generate
 sed -i "/uci commit system/i uci set system.system.zonename=Asia/\Shanghai"  package/base-files/files/bin/config_generate
 sed -i "/uci commit luci/i uci set luci.main.lang=zh_cn"  package/base-files/files/bin/config_generate
+
+# Banner
+# Refer https://github.com/unifreq/openwrt_packit/blob/master/public_funcs
+#rm -rf package/base-files/files/etc/banner
+# 插入信息到 banner
+# 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
+cat >> files/banner <<EOF
+-----------------------------------------------------
+ PACKAGE:     $OMR_DIST
+ VERSION:     $(git -C "$OMR_FEED" tag --sort=committerdate | tail -1)
+ TARGET:      $OMR_TARGET
+ ARCH:        $OMR_REAL_TARGET 
+ BUILD REPO:  $(git config --get remote.origin.url)
+ BUILD DATE:  $(date -u)
+-----------------------------------------------------
+EOF
+
+mv -f files/banner package/base-files/files/etc/banner >/dev/null 2>&1
+mkdir -p package/base-files/files/etc/profile.d/
+mv -f assets/30-sysinfo.sh package/base-files/files/etc/profile.d/30-sysinfo.sh >/dev/null 2>&1
 
 # UDPXY
 # sed -i "/uci commit system/a uci commit udpxy"  package/lean/default-settings/files/zzz-default-settings
