@@ -59,7 +59,7 @@ sed -i "/uci commit dhcp/i uci delete dhcp.lan.dhcpv6"  package/lean/default-set
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 #sed -i 's/255.255.0.0/255.255.255.0/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/10.1.12.22/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.1.12.222/g' package/base-files/files/bin/config_generate
 
 # DIAG
 sed -i "/uci commit system/a uci commit diag"  package/lean/default-settings/files/zzz-default-settings
@@ -95,8 +95,8 @@ sed -i "/uci commit luci/i uci set luci.main.lang=zh_cn"  package/base-files/fil
 # sed -i "/uci commit udpxy/i uci set udpxy.@udpxy[0].mcsub_renew='55'"  package/lean/default-settings/files/zzz-default-settings
 
 # Bash
-sed -i "s/\/bin\/ash/\/bin\/bash/" package/base-files/files/etc/passwd >/dev/null 2>&1
-sed -i "s/\/bin\/ash/\/bin\/bash/" package/base-files/files/usr/libexec/login.sh >/dev/null 2>&1
+# sed -i "s/\/bin\/ash/\/bin\/bash/" package/base-files/files/etc/passwd >/dev/null 2>&1
+# sed -i "s/\/bin\/ash/\/bin\/bash/" package/base-files/files/usr/libexec/login.sh >/dev/null 2>&1
 
 # SSH open to all
 sed -i '/option Interface/s/^#\?/#/'  package/network/services/dropbear/files/dropbear.config
