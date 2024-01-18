@@ -1,4 +1,8 @@
 #!/bin/bash
+# 修改默认系统参数  configure.sh
+# 添加其它Luci插件  package.sh
+# 插件 / 应用配置文件  configs/External.config
+
 git clone  https://github.com/bigbugcc/OpenwrtApp package/otherapp/OpenwrtApp
 git clone  https://github.com/destan19/OpenAppFilter package/otherapp/OpenAppFilter
 git clone  https://github.com/zzsj0928/luci-app-pushbot package/otherapp/luci-app-pushbot
