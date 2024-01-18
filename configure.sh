@@ -1,5 +1,8 @@
 #!/bin/bash
 # Modify default system settings
+# 修改默认系统参数  configure.sh
+# 添加其它Luci插件  package.sh
+# 插件 / 应用配置文件  configs/External.config
 
 # 修改默认IP为192.168.10.1
 sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate 
