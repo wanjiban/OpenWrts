@@ -16,3 +16,8 @@ git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git package/other
 
 # UnblockNeteaseMusic
 git clone -b master  https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/unblockneteasemusic
+
+# luci-app-msd_lite tailscale
+git clone https://github.com/ximiTech/luci-app-msd_lite.git package/otherapp/luci-app-msd_lite
+git clone https://github.com/ximiTech/msd_lite.git package/otherapp/msd_lite
+git clone https://github.com/selfcan/luci-app-tailscale.git package/otherapp/luci-app-tailscale
